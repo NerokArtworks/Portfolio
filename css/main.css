@@ -9,11 +9,34 @@ body {
     background-color: #f2f2f2;
     color: #000;
     overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+a, p {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Nimbus Sans Reg';
+    font-weight: lighter;
 }
 
 @font-face {
     font-family: "PerpetuaTiltingMT";
     src: url("../fonts/Perpetua\ Tilting\ MT/PERTILI.ttf");
+}
+
+@font-face {
+    font-family: "Nimbus Sans Reg";
+    src: url("../fonts/NimbusSans/NimbusSanL-Reg.otf");
+}
+
+@font-face {
+    font-family: "Nimbus Sans Bold";
+    src: url("../fonts/NimbusSans/NimbusSanL-Bol.otf");
+}
+
+@font-face {
+    font-family: "Nimbus Sans Reg Ita";
+    src: url("../fonts/NimbusSans/NimbusSanL-RegIta.otf");
 }
 
 /* LOADING */
@@ -28,7 +51,69 @@ body {
     transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* INDEX */
+/* CURSOR */
+.con-cursor {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    mix-blend-mode: exclusion;
+}
+.cursor {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    pointer-events: none;
+    mix-blend-mode: exclusion;
+    transition: 200ms cubic-bezier(0.215, 0.610, 0.355, 1);
+    user-select: none;
+    z-index: 999;
+}
+
+.cursor svg {
+    transform: rotateZ(-90deg);
+}
+
+.cursor svg circle {
+    stroke-dashoffset: 400%;
+    stroke-dasharray: 400%;
+}
+
+.c-focus {
+    transform: scale(1.2);
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-r {
+    right: 0;
+    padding-right: 5vw;
+}
+
+.nav__ul {
+    display: flex;
+    line-height: 1;
+    list-style-type: none;
+    gap: 2vw;
+}
+
+.nav__item__link {
+    padding: 2em 1em;
+    text-align: center;
+    opacity: 1;
+    transition: opacity .8s,color .8s,background .8s;
+    font-size: .8rem;
+}
+
+/* HOME */
 .con-home {
     width: 100%;
     height: 95vh;
@@ -76,8 +161,24 @@ body {
     cursor: default;
     mix-blend-mode: normal;
     transform: translateX(-100%) perspective(1000px);
-    transition: transform 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-    /* pointer-events: none; */
+    transition: transform 1.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+}
+
+.letter-anim-down-f, .letter-anim-down-m, .letter-anim-down-l {
+    transform: translateY(150%) perspective(1000px);
+}
+
+.letter-anim-down-f {
+    transition-delay: 1s;
+}
+
+.letter-anim-down-m {
+    transition-delay: 1.2s;
+}
+
+.letter-anim-down-l {
+    transition-delay: 1.4s;
 }
 
 .home__title__name {
