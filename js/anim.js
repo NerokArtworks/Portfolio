@@ -4,6 +4,7 @@ const making = document.getElementById('load__making');
 const conLetters = document.getElementsByClassName('home__title')[0];
 const hLetters = document.querySelectorAll(".home__title__letter");
 const cursor = document.querySelector('.cls-1');
+const conLottie = document.querySelector('.con-home-lottie');
 
 // POINTER EVENTS STATE
 var activatePointers = false;
@@ -17,14 +18,22 @@ anime({
 });
 
 // PAGE LOAD
-window.onload = () => {
+window.addEventListener('load', function () {
     console.log('Loaded');
     // Hide the intro animation
     setTimeout(hideIntro, 2000);
     // Show body and main title
     setTimeout(showContent, 3000);
     setTimeout(loadCursor, 2000);
-}
+})
+// window.onload = () => {
+//     console.log('Loaded');
+//     // Hide the intro animation
+//     setTimeout(hideIntro, 2000);
+//     // Show body and main title
+//     setTimeout(showContent, 3000);
+//     setTimeout(loadCursor, 2000);
+// }
 
 function loadCursor() {
     anime({
@@ -44,6 +53,7 @@ function enablePointerEvents() {
 function showContent() {
     body.style.overflowY = "visible";
     conLetters.style.opacity = 1;
+    conLottie.style.opacity = 1;
     // Start title animation for each letter
     hLetters.forEach(animateShowLetter);
     console.log('Scroll alowed');
@@ -98,10 +108,40 @@ function animateHoverLetter(item, index) {
 const cursorRegular = document.querySelector('.cursor');
 
 const moveCursor = (e)=> {
-    const mouseY = e.clientY;
-    const mouseX = e.clientX;
+    let mouseY = e.clientY;
+    let mouseX = e.clientX;
      
     cursorRegular.style.transform = `translate3d(${mouseX - 22}px, ${mouseY - 22}px, 0)`;
     // cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 }
 window.addEventListener('mousemove', moveCursor);
+
+
+// BODYMOVIN
+// var hAnim = bodymovin.loadAnimation({
+//     container: document.getElementById('h-lottie-target'),
+//     renderer: 'svg',
+//     loop: true,
+//     autoplay: true,
+//     path: 'a.json'
+// })
+
+LottieInteractivity.create({
+    player: '#firstLottie',
+    mode: 'scroll',
+    container: "#con-lottie",
+    actions: [
+        {
+            visibility:[0, 0.3],
+            type: "stop",
+            transition: 'onComplete',
+            frames: [0]
+        },
+        {
+            visibility: [0.3, 1.0],
+            type: "seek",
+            transition: 'seek',
+            frames: [0, 135]
+        }
+    ]
+});
