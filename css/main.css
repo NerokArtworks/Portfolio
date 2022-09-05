@@ -44,6 +44,14 @@ a, p {
     font-weight: lighter;
 }
 
+.o-quarter {
+    width: 25vw;
+}
+
+.two-quarter {
+    width: 50vw;
+}
+
 @font-face {
     font-family: "PerpetuaTiltingMT";
     src: url("../fonts/Perpetua\ Tilting\ MT/PERTILI.ttf");
@@ -85,6 +93,7 @@ a, p {
     overflow: hidden;
     mix-blend-mode: exclusion;
     z-index: 9;
+    user-select: none;
 }
 .cursor {
     width: 44px;
@@ -127,11 +136,13 @@ a, p {
     height: 5vh;
     background-color: #f2f2f2;
     z-index: 20;
+    opacity: 1;
 }
 
 .nav-r {
     right: 0;
     padding-right: 5vw;
+    transition: 1.5s opacity linear;
 }
 
 .nav__ul {
@@ -139,14 +150,20 @@ a, p {
     line-height: 1;
     list-style-type: none;
     gap: 2vw;
+    overflow: hidden;
+}
+
+.nav__item {
+    transform: translateY(-10vh);
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1); 
 }
 
 .nav__item__link {
     padding: 2em 1em;
     text-align: center;
     opacity: 1;
-    transition: opacity .8s,color .8s,background .8s;
     font-size: .8rem;
+    
 }
 
 /* LOTTIE */
@@ -261,6 +278,33 @@ a, p {
     z-index: 2;
 }
 
+.con-work-link {
+    width: 8vw;
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    transition: 1s opacity ease;
+}
+
+.con-aside-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+}
+
+.aside-img {
+    position: relative;
+}
+
+.aside-img-mask {
+    width: 100%;
+    overflow: hidden;
+}
 
 /* SECTION 1 */
 .con-s1 {

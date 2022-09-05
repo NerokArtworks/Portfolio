@@ -2,9 +2,12 @@
 const body = document.body;
 const making = document.getElementById('load__making');
 const conLetters = document.getElementsByClassName('home__title')[0];
-const hLetters = document.querySelectorAll(".home__title__letter");
+const hLetters = document.querySelectorAll('.home__title__letter');
 const cursor = document.querySelector('.cls-1');
 const conLottie = document.querySelector('.con-home-lottie');
+const conWCircle = document.querySelector('.con-work-link');
+const conAsideImg = document.querySelector('.con-aside-img');
+const navItems = document.querySelectorAll('.nav__item');
 
 // POINTER EVENTS STATE
 var activatePointers = false;
@@ -26,6 +29,7 @@ window.addEventListener('load', function () {
     setTimeout(showContent, 3000);
     setTimeout(loadCursor, 2000);
 })
+
 // window.onload = () => {
 //     console.log('Loaded');
 //     // Hide the intro animation
@@ -46,6 +50,7 @@ function loadCursor() {
 
 function enablePointerEvents() {
     activatePointers = true;
+    workButtonListeners();
     // Create Event Listeners
     hLetters.forEach(animateHoverLetter);
 }
@@ -54,9 +59,44 @@ function showContent() {
     body.style.overflowY = "visible";
     conLetters.style.opacity = 1;
     conLottie.style.opacity = 1;
-    // Start title animation for each letter
+
+    // Start for each letter title animation
     hLetters.forEach(animateShowLetter);
+
+    // Navbar items animation
+    navItems.forEach((item, i) => {
+        setTimeout(() => {
+            anime({
+                targets: item,
+                translateY: 0,
+                duration: 1500, // Duration and easing don't work for some reason, transition established in css
+                easing: 'linear'
+            });
+        }, i * 1000);
+      });
+      
     console.log('Scroll alowed');
+}
+
+function workButtonListeners() {
+    conWCircle.style.opacity = 1;
+    console.log('Animando imagen');
+    conWCircle.addEventListener('click', () => {
+        anime({
+            targets: conAsideImg,
+            width: '100vw',
+            duration: 1500,
+            easing: 'cubicBezier(1, .2, .2, 1)'
+        })
+
+        anime({
+            targets: cursor,
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'cubicBezier(0.770, 0.5, 0, 1.000);',
+            duration: 2500
+        });
+    });
+    
 }
 
 function animateShowLetter(item, index) {
