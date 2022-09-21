@@ -179,7 +179,7 @@ a, p {
 /* LOTTIE */
 .con-home-lottie {
     position: absolute;
-    /* top: 40vh; */
+    top: 40vh;
     right: 0;
     width: 100vw;
     height: 100vh;
@@ -293,7 +293,7 @@ a, p {
     position: absolute;
     bottom: 5vh;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -5vh);
     text-align: center;
     z-index: 19;
     opacity: 0;
@@ -322,30 +322,32 @@ a, p {
     scroll-snap-type: y mandatory;
     scroll-snap-align: center;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     position: relative;
     top: 40vh;
-    /* background-image: url("../assets/img/02.png");
-    background-size: auto; */
-    z-index: 21;
+    z-index: 19;
     /* mix-blend-mode: difference; */
-    margin: 5vw 5vw;
+    margin: 10vh 5vw;
     overflow: hidden;
 }
 
 .s1-grid {
+    position: relative;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     flex-direction: column;
     width: 100%; /* 50? */
+    height: 100%;
 }
 
 .s1-grid-line {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    height: 20%;
     /* border-bottom: 1px solid black; */
     transform: perspective(1000px);
+    overflow: hidden;
 }
 
 .s1-grid-item {
@@ -353,8 +355,9 @@ a, p {
     display: flex;
     justify-content: space-between;
     transform-origin: top;
-    transform: rotateX(-90deg);
+    transform: rotateX(-90deg) perspective(1000px);
     transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 19;
 }
 
 .s1-grid-line:nth-child(1) {
@@ -368,11 +371,6 @@ a, p {
     margin: 0;
 }
 
-/* .s1-grid-item h1:nth-child(1) {
-    transform: skewX(10deg);
-    transform-origin: bottom;
-} */
-
 .b-line {
     background-color: #000;
     height: 0.5px;
@@ -383,12 +381,25 @@ a, p {
 
 .s1-con-img {
     width: 50%;
-    height: auto;
+    height: 100%;
     position: absolute;
     right: 10vw;
     top: 0;
-    z-index: 1;
     transform-origin: top;
-    /* transform: rotateX(-90deg); */
+    transform: rotateX(-90deg) perspective(1000px);
     transition: 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+}
+
+.s1-con-img img {
+}
+
+
+/* SECTION 2 */
+.con-s2 {
+    top: 40vh;
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    background-color: rgb(225, 255, 253);
 }

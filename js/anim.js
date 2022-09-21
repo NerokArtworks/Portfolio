@@ -189,20 +189,42 @@ const s1Img = document.querySelector('.s1-con-img');
 //     else s1BLine[i].style.width = i*25 + '%';
 // }
 
-s1Img.addEventListener('visible', e => {
-    s1Img.style.transform = 'rotateX(0)';
-});
-
 function lineHoverAnim(index) {
-    let mouseY = window.clientY;
-    let mouseX = window.clientX;
-    s1LineH[index].style.transform = `skewX(10deg)`;
-    if (index == 0) {
-        s1BLine[index].style.width = 5 + '%';
-    }
-    else s1BLine[index].style.width = index*20 + '%';
-    if(index == 4) {
-        s1BLine[index + 1].style.width = (index+1)*20 + '%';
-    }
+    s1LineH[index].style.transform = `skewX(10deg) perspective(1000px)`;
 };
+
+// Line Counter
+var lineCounter = 0;
+function lineScrollIntoView() {
+    if (lineCounter < 5) {
+        if (lineCounter == 0) {
+            s1BLine[lineCounter].style.width = 5 + '%';
+            s1LineH[lineCounter].style.transform = 'rotateX(0) perspective(1000px)';
+        }
+        else {
+            s1BLine[lineCounter].style.width = lineCounter*20 + '%';
+            s1LineH[lineCounter].style.transform = 'rotateX(0) perspective(1000px)';
+            s1Img.style.transform = 'rotateX(0) perspective(1000px)';
+        }
+        if(lineCounter == 4) {
+            s1BLine[lineCounter + 1].style.width = (lineCounter+1)*20 + '%';
+            s1BLine[lineCounter + 1].style.height = '1px';
+            s1LineH[lineCounter].style.transform = 'rotateX(0) perspective(1000px)';
+        }
+        lineCounter++;
+    }
+}
+
+// WHEN SECTION 1 SCROLLS INTO VIEW
+var observer = new IntersectionObserver(function(entries) {
+    if(entries[0].isIntersecting === true)
+        console.log('Element has just become visible in screen');
+        setTimeout(lineScrollIntoView, 200);
+}, { threshold: [0] });
+
+observer.observe(document.querySelectorAll(".s1-grid-line")[0]);
+observer.observe(document.querySelectorAll(".s1-grid-line")[1]);
+observer.observe(document.querySelectorAll(".s1-grid-line")[2]);
+observer.observe(document.querySelectorAll(".s1-grid-line")[3]);
+observer.observe(document.querySelectorAll(".s1-grid-line")[4]);
 
