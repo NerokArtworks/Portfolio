@@ -82,6 +82,7 @@ function workButtonListeners() {
     conWCircle.style.opacity = 1;
     console.log('Animando imagen');
     conWCircle.addEventListener('click', () => {
+        conWCircle.style.opacity = 0;
         anime({
             targets: conAsideImg,
             width: '100vw',
