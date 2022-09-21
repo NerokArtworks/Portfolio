@@ -157,16 +157,6 @@ const moveCursor = (e)=> {
 }
 window.addEventListener('mousemove', moveCursor);
 
-
-// BODYMOVIN
-// var hAnim = bodymovin.loadAnimation({
-//     container: document.getElementById('h-lottie-target'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'a.json'
-// })
-
 LottieInteractivity.create({
     player: '#firstLottie',
     mode: 'scroll',
@@ -186,3 +176,33 @@ LottieInteractivity.create({
         }
     ]
 });
+
+// Section 1
+const s1LineH = document.querySelectorAll('.s1-grid-item');
+const s1BLine = document.querySelectorAll('.b-line');
+const s1Img = document.querySelector('.s1-con-img');
+
+// for (let i = 0; i < s1BLine.length; i++) {
+//     if (i == 0) {
+//         s1BLine[i].style.width = 10 + '%';
+//     }
+//     else s1BLine[i].style.width = i*25 + '%';
+// }
+
+s1Img.addEventListener('visible', e => {
+    s1Img.style.transform = 'rotateX(0)';
+});
+
+function lineHoverAnim(index) {
+    let mouseY = window.clientY;
+    let mouseX = window.clientX;
+    s1LineH[index].style.transform = `skewX(10deg)`;
+    if (index == 0) {
+        s1BLine[index].style.width = 5 + '%';
+    }
+    else s1BLine[index].style.width = index*20 + '%';
+    if(index == 4) {
+        s1BLine[index + 1].style.width = (index+1)*20 + '%';
+    }
+};
+
