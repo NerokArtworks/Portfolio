@@ -8,6 +8,7 @@ const conLottie = document.querySelector('.con-home-lottie');
 const conWCircle = document.querySelector('.con-work-link');
 const conAsideImg = document.querySelector('.con-aside-img');
 const navItems = document.querySelectorAll('.nav__item');
+const cursorSVG = document.querySelector('.cls-1');
 
 // POINTER EVENTS STATE
 var activatePointers = false;
@@ -56,6 +57,7 @@ function enablePointerEvents() {
 }
 
 function showContent() {
+    cursorSVG.style.fill = '#ffffffc2 !important';
     body.style.overflowY = "visible";
     conLetters.style.opacity = 1;
     conLottie.style.opacity = 1;
@@ -73,8 +75,8 @@ function showContent() {
                 easing: 'linear'
             });
         }, i * 1000);
-      });
-      
+    });
+
     console.log('Scroll alowed');
 }
 
@@ -190,7 +192,7 @@ const s1Img = document.querySelector('.s1-con-img');
 // }
 
 function lineHoverAnim(index) {
-    s1LineH[index].style.transform = `skewX(10deg) perspective(1000px)`;
+    s1LineH[index].style.transform = `perspective(1000px) skewX(10deg)`;
 };
 
 // Line Counter
@@ -198,13 +200,14 @@ var lineCounter = 0;
 function lineScrollIntoView() {
     if (lineCounter < 5) {
         if (lineCounter == 0) {
-            s1BLine[lineCounter].style.width = 5 + '%';
+            s1BLine[lineCounter].style.width = 8 + '%';
             s1LineH[lineCounter].style.transform = 'rotateX(0) perspective(1000px)';
         }
         else {
             s1BLine[lineCounter].style.width = lineCounter*20 + '%';
             s1LineH[lineCounter].style.transform = 'rotateX(0) perspective(1000px)';
             s1Img.style.transform = 'rotateX(0) perspective(1000px)';
+            s1Img.style.opacity = '1';
         }
         if(lineCounter == 4) {
             s1BLine[lineCounter + 1].style.width = (lineCounter+1)*20 + '%';

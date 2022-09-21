@@ -102,15 +102,14 @@ a, p {
     position: fixed;
     overflow: hidden;
     mix-blend-mode: exclusion;
-    z-index: 9;
     user-select: none;
+    z-index: 21;
 }
 .cursor {
     width: 44px;
     height: 44px;
     position: relative;
     pointer-events: none;
-    mix-blend-mode: exclusion;
     transition: 200ms cubic-bezier(0.215, 0.610, 0.355, 1);
     user-select: none;
 }
@@ -218,7 +217,7 @@ a, p {
     flex-wrap: wrap;
     opacity: 0;
     transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
-    z-index: 10;
+    z-index: 22;
 }
 
 .home__title__letter {
@@ -244,7 +243,6 @@ a, p {
     transform: translateX(-100%) perspective(1000px);
     transition: transform 1.8s cubic-bezier(0.165, 0.84, 0.44, 1);
     pointer-events: none;
-    z-index: 10;
 }
 
 .letter-anim-down-f, .letter-anim-down-m, .letter-anim-down-l {
@@ -325,7 +323,7 @@ a, p {
     height: 90vh;
     position: relative;
     top: 40vh;
-    z-index: 19;
+    z-index: 22;
     /* mix-blend-mode: difference; */
     margin: 10vh 5vw;
     overflow: hidden;
@@ -355,9 +353,14 @@ a, p {
     display: flex;
     justify-content: space-between;
     transform-origin: top;
-    transform: rotateX(-90deg) perspective(1000px);
+    transform: perspective(1000px) rotateX(-90deg);
     transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
     z-index: 19;
+}
+
+.s1-grid-item:hover {
+    transform: perspective(1000px) rotateX(0deg) !important;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .s1-grid-line:nth-child(1) {
@@ -365,7 +368,7 @@ a, p {
 }
 
 .s1-grid-item h1 {
-    font-size: 8em;
+    font-size: 8rem;
     font-weight: lighter;
     padding: 0;
     margin: 0;
@@ -376,7 +379,8 @@ a, p {
     height: 0.5px;
     width: 0%;
     transition: width 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    z-index: 19;
+    transition-delay: .5s;
+    z-index: 22;
 }
 
 .s1-con-img {
@@ -385,13 +389,21 @@ a, p {
     position: absolute;
     right: 10vw;
     top: 0;
-    transform-origin: top;
-    transform: rotateX(-90deg) perspective(1000px);
-    transition: 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-origin: top center;
+    transform: perspective(1000px) rotateX(-90deg);
+    opacity: 1;
+    transition: 2s cubic-bezier(0.19, 1, 0.22, 1);
     overflow: hidden;
 }
 
 .s1-con-img img {
+    opacity: 1;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.s1-con-img img:hover {
+    opacity: .8;
+    filter: contrast(1.5);
 }
 
 
