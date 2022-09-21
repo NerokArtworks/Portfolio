@@ -6,6 +6,7 @@
 
 html {
     scroll-behavior: smooth;
+    cursor: none;
 }
 
 /* SCROLLBAR */
@@ -35,6 +36,11 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
     width: 100vw;
+    cursor: none;
+}
+
+:hover {
+    cursor: none;
 }
 
 a, p {
@@ -50,6 +56,10 @@ a, p {
 
 .two-quarter {
     width: 50vw;
+}
+
+.w-100 {
+    width: 100%;
 }
 
 @font-face {
@@ -229,7 +239,7 @@ a, p {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    cursor: default;
+    cursor: none;
     mix-blend-mode: normal;
     transform: translateX(-100%) perspective(1000px);
     transition: transform 1.8s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -285,7 +295,7 @@ a, p {
     left: 50%;
     transform: translate(-50%, 0);
     text-align: center;
-    z-index: 20;
+    z-index: 19;
     opacity: 0;
     transition: 1s opacity ease;
 }
@@ -313,14 +323,71 @@ a, p {
     width: 100%;
     height: 100vh;
     position: relative;
-    top: 20vh;
+    top: 40vh;
     /* background-image: url("../assets/img/02.png");
     background-size: auto; */
     z-index: 21;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
+    margin: 5vw 5vw;
+    overflow: hidden;
 }
 
-.con-s1 img {
-    
-    user-select: none;
+.s1-grid {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%; /* 50? */
+}
+
+.s1-grid-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* border-bottom: 1px solid black; */
+    transform: perspective(1000px);
+}
+
+.s1-grid-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+    transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.s1-grid-line:nth-child(1) {
+    /* border-top: 1px solid black; */
+}
+
+.s1-grid-item h1 {
+    font-size: 8em;
+    font-weight: lighter;
+    padding: 0;
+    margin: 0;
+}
+
+/* .s1-grid-item h1:nth-child(1) {
+    transform: skewX(10deg);
+    transform-origin: bottom;
+} */
+
+.b-line {
+    background-color: #000;
+    height: 0.5px;
+    width: 0%;
+    transition: width 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 19;
+}
+
+.s1-con-img {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    right: 10vw;
+    top: 0;
+    z-index: 1;
+    transform-origin: top;
+    /* transform: rotateX(-90deg); */
+    transition: 2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
