@@ -231,3 +231,13 @@ observer.observe(document.querySelectorAll(".s1-grid-line")[2]);
 observer.observe(document.querySelectorAll(".s1-grid-line")[3]);
 observer.observe(document.querySelectorAll(".s1-grid-line")[4]);
 
+// IMAGE DISPLACEMENT HOVER EFFECT
+const hover = new hoverEffect ({
+    parent: document.querySelector('.distortion'),
+    intensity: .1,
+    image1: '/assets/img/rebbecaVert.jpg',
+    image2: '/assets/img/rebbecaVert.jpg',
+    angle: Math.PI / 8,
+    displacementImage: '/assets/img/heightMap.png'
+})
+
